@@ -1,73 +1,350 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sohom Das - Personal Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* CSS HEX */
+      --light-blue: #b8d8d8ff;
+      --cadet-gray: #7a9e9fff;
+      --paynes-gray: #4f6367ff;
+      --beige: #eef5dbff;
+      --bittersweet: #fe5f55ff;
+      /* CSS HSL */
+      --light-blue-hsl: hsla(180, 29%, 78%, 1);
+      --cadet-gray-hsl: hsla(182, 16%, 55%, 1);
+      --paynes-gray-hsl: hsla(190, 13%, 36%, 1);
+      --beige-hsl: hsla(76, 57%, 91%, 1);
+      --bittersweet-hsl: hsla(4, 99%, 66%, 1);
+    }
 
-<body>
-  <center>
-    <nav>
-      <li><a href="index.html"> HOME </a></li>
-      <li><a href="carsPage.html"> CARS </a></li>
-      <li><a href="cspPage.html"> CSP </a></li>
-      <li><a href="GD.html"> GRAPHIC DESIGN </a </li>
-    </nav>
-    <br>
-    <h1> Mr. Das' Website </h1>
-    <img src="https://libertywalk.shop/wp-content/uploads/2020/06/Acura-NSX-NA1-1990-2005-Liberty-Walk-Wide-Body-Kit-16.jpeg">
-  </center>
-</body>
-<title>Sohom's Personal Portfolio - Home</title>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: var(--beige);
+      color: var(--paynes-gray);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: var(--paynes-gray);
+      color: var(--beige);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      transition: padding 0.3s, background-color 0.3s;
+    }
+
+    header.small {
+      padding: 0.5rem 1rem;
+      background-color: var(--paynes-gray);
+    }
+
+    header h1 {
+      margin: 0;
+      color: var(--bittersweet);
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      background-color: var(--paynes-gray);
+      padding: 0.5rem 1rem;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: var(--beige);
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--bittersweet);
+      transform: scale(1.1);
+    }
+
+    section {
+      padding: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: var(--bittersweet);
+    }
+
+    .projects,
+    .contact {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .project {
+      margin-bottom: 1.5rem;
+    }
+
+    .project h3 {
+      margin: 0 0 0.5rem 0;
+    }
+
+    .project p {
+      margin: 0;
+    }
+
+    .project a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--bittersweet);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .project a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-form {
+      background-color: var(--light-blue);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form h2 {
+      color: var(--paynes-gray);
+      margin-top: 0;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--cadet-gray);
+      border-radius: 4px;
+    }
+
+    .contact-form input[type="submit"] {
+      background-color: var(--bittersweet);
+      color: var(--beige);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s;
+    }
+
+    .contact-form input[type="submit"]:hover {
+      background-color: var(--paynes-gray);
+    }
+
+    .confetti-message {
+      display: none;
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--bittersweet);
+      font-weight: 700;
+    }
+
+    footer {
+      background-color: var(--paynes-gray);
+      color: var(--beige);
+      text-align: center;
+      padding: 1rem 2rem;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+      }
+
+      section {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 1rem;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+      }
+
+      section {
+        padding: 1rem 0.5rem;
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sticky header
+      window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+          header.classList.add('small');
+        } else {
+          header.classList.remove('small');
+        }
+      });
+      // Smooth scrolling animation
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      // Confetti Animation
+      const contactForm = document.getElementById('contact-form');
+      const confettiMessage = document.querySelector('.confetti-message');
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent the form from actually submitting
+        // Show a success message
+        confettiMessage.style.display = 'block';
+        confettiMessage.textContent = "Message sent! I'll get back to you soon.";
+        // Clear form fields
+        contactForm.reset();
+        // Trigger confetti
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: {
+            y: 0.6
+          },
+          colors: ['#b8d8d8', '#7a9e9f', '#4f6367', '#fe5f55']
+        });
+        // Hide the success message after 5 seconds
+        setTimeout(() => {
+          confettiMessage.style.display = 'none';
+        }, 5000);
+      });
+    });
+  </script>
 </head>
 
+<body>
+  <header>
+    <h1>Sohom Das</h1>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#activities">Activities</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>A high school student with a passion for electrical and mechanical engineering, committed to the field of engineering by exploring, learning, and creating.</p>
+    <p>Demonstrated abilities in various projects, such as designing and building a drone, creating a 2D racing game, and developing an AI image processor. Excelled in academic courses, especially in mathematics, completing Integrated 1-3 and AP Calculus AB with all A grades.</p>
+    <p>President of the Westview Car Club, demonstrated leadership and communication skills, has enthusiasm for mechanical engineering and design.</p>
+  </section>
+  <section id="education">
+    <h2>Education</h2>
+    <p><strong>Westview High School, San Diego, CA</strong> (Expected Graduation: June 2025)</p>
+    <p>Current GPA: 3.75/4.0</p>
+    <p><strong>Relevant Coursework/Projects:</strong></p>
+    <ul>
+      <li>AP Calculus AB: Gained a deeper understanding of the fundamental concepts and applications of calculus. Prepared for further exploration of mathematics and its diverse applications in various disciplines.</li>
+      <li>AP Computer Science Principles: Developed a comprehensive understanding of the fundamentals of computer science. Prepared for further exploration of specific programming languages, advanced algorithms, and the ever-evolving world of technology.</li>
+      <li>Digital Electronics: Learned about the various processes and workflows required to make different types of electronic systems (security, gaming). Learned how to use Multisim on a basic level.</li>
+      <li>Graphic Design: Learned how to create aesthetically pleasing posters and pictures. Learned to edit using Photoshop and Illustrator.</li>
+    </ul>
+  </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>Drone Design and Build</h3>
+        <p>Designed and built a drone using Blender and Fusion 360, programmed it using C++.</p>
+        <a href="#project-link">View Project</a>
+      </div>
+      <div class="project">
+        <h3>2D Racing Game</h3>
+        <p>Created a 2D racing game using Unity and designed the graphics and sound effects.</p>
+        <a href="#project-link">View Project</a>
+      </div>
+      <div class="project">
+        <h3>AI Image Processor</h3>
+        <p>Developed an AI image processor using Python and OpenCV.</p>
+        <a href="#project-link">View Project</a>
+      </div>
+    </div>
+  </section>
+  <section id="skills">
+    <h2>Special Interests and Skills</h2>
+    <ul>
+      <li>Graphic design and photo/video editing</li>
+      <li>Various programming languages</li>
+      <li>Unity game development</li>
+      <li>AI concepts and applications</li>
+      <li>Proficient in various word processors and spreadsheet software</li>
+      <li>Familiar with Blender and Fusion 360</li>
+    </ul>
+  </section>
+  <section id="activities">
+    <h2>Extracurricular Activities & Experience</h2>
+    <ul>
+      <li>President of Westview Car Club (Feb 2023 - Present): Brainstormed and planned activities for the club, such as car meets, workshops, and fundraisers. Produced content for the club's website, social media and newsletter. Managed the club's budget, inventory, membership and communication.</li>
+      <li>Executive of Westview Engineering Club: Helped design an RC kit car using Fusion 360, Blender. Taught members how to use various professional 3D modeling softwares on a basic level.</li>
+      <li>Member of Westview AI Club: Learned about various AI concepts and applications, such as LLMs, computer vision, natural language processing, etc.</li>
+      <li>Executive of Drone Pilot Club: Designed and built a drone using Blender and Fusion 360, programmed it using C++.</li>
+      <li>Game Development Club: Created a 2D racing game using Unity and designed the graphics and sound effects.</li>
+    </ul>
+  </section>
+  <section id="contact">
+    <div class="contact-form">
+      <h2>Contact Me</h2>
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="subject" placeholder="Subject" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <input type="submit" value="Send Message">
+      </form>
+      <div class="confetti-message"></div>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2024 Sohom Das. All rights reserved.</p>
+    <p>Social Media Links</p>
+  </footer>
+</body>
+
 </html>
-
-<style>
- h1 {
-  color: #f4f1bb;
-  font-family: system-ui;
-  text-align: center;
-  font-size: 400%;
-  letter-spacing: -1%;
-  text-decoration: overline;
-}
-
-nav {
-  list-style-type: none;
-  position: fixed;
-  background-color: #9bc1bc;
-  width: 100%;
-  top: 0%;
-  left: 0%;
-  height: 3%;
-}
-
-li {
-  display: inline;
-  padding: 3%;
-  font-family: system-ui;
-  font-size: 17px;
-}
-
-body {
-  background-color: #ed6a5a;
-}
-
-img {
-  width: 70%;
-  border-radius: 5%;
-}
-
-.active {
-  background-color: #04aa6d;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  display: inline;
-  color: #ed6a5a;
-}
-
-</style>
